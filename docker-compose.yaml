@@ -1,0 +1,14 @@
+version: "3"
+services:
+  home-app:
+    image: ross-starter-template-1.0.0
+    container_name: home_app_container
+    ports:
+      - "5000:5000"
+  swagger-ui:
+    image: swaggerapi/swagger-ui
+    container_name: swagger_ui_container
+    ports:
+      - "5001:8080"
+    environment:
+      API_URL: http://localhost:5000/docs/swagger.json

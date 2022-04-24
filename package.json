@@ -1,0 +1,30 @@
+{
+  "name": "ross-starter-template",
+  "version": "1.0.0",
+  "main": "src/app.ts",
+  "scripts": {
+    "app:start": "node ./dist/app.js",
+    "app:build-start:dev": "npm run tsoa:all && npm run app:start:dev",
+    "app:start:dev": "ts-node-dev src/app.ts",
+    "docs:tsoa": "tsoa docs",
+    "tsoa:all": "tsoa routes && tsoa spec",
+    "clean": "rm -rf src/generated && rm -rf docs/api && rm -rf dist/",
+    "app:publish": "npm run tsoa:all && tsc && cp -r ./src/generated/docs ./dist/generated/",
+    "docker:build": "docker build -t ross-starter-template-$npm_package_version .",
+    "docker:serve": "docker-compose up -d"
+  },
+  "dependencies": {
+    "@types/express": "^4.17.13",
+    "@types/node": "^17.0.23",
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "ts-node": "^10.7.0",
+    "tsoa": "^3.14.1",
+    "typescript": "^4.6.3",
+    "winston": "^3.7.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15",
+    "ts-node-dev": "^1.1.8"
+  }
+}
